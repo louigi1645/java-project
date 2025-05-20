@@ -23,7 +23,7 @@ Bienvenue dans **Penacony**, une application web développée avec Spring Boot e
    - **Spring Boot** : Le cœur de l'application, qui facilite la création d'applications web robustes.
    - **Thymeleaf** : Un moteur de templates pour générer des pages HTML dynamiques.
    - **MySQL** : Une base de données relationnelle pour stocker les données.
-   - **Hibernate** : Une bibliothèque qui simplifie l'interaction avec la base de données.
+   - **Spring-Security** : Une bibliothèque qui permet la sécurisation des accès de l'application.
 
 ## Arborescence de fichiers
 
@@ -33,7 +33,7 @@ src
    ├ java -> le code Java
    │ └ com
    │   └ penacony
-   │     └ penacony
+   │     └ hotel
    │       ├ controller -> les définitions des Routes Spring Boot
    │       ├ model -> les tables de la db au format Classes
    │       ├ repository -> contient des méthodes d'accès aux données de la db, pour chaque table

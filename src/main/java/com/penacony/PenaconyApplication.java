@@ -64,13 +64,13 @@ public class PenaconyApplication {
         return args -> {
             String username = "admin";
             String password = "MyS3cur3P@ssw0rd";
-            logger.info("Initialisation des rôles...");
-            logger.info("Nombre de rôles existants: " + userService.count());
+            logger.info("Initialisation des utilisateurs...");
+            logger.info("Nombre d'utilisateurs existants: " + userService.count());
 
             // Initialiser les rôles si la table est vide
 
             if (userService.count() == 0) {
-                logger.info("Création du rôle ROLE_USER");
+                logger.info("Création de l'employé admin");
                 
                 userService.registerNewEmployee(username, "", password, "", "","","","",
                 null, 200000.0);
