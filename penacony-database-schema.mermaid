@@ -1,0 +1,68 @@
+erDiagram
+    users ||--o| clients : has
+    users ||--o| employees : has
+    users }o--|| user_roles : has
+    user_roles }o--|| roles : has
+    clients ||--o{ reservations : makes
+    reservations }o--o{ room : includes
+    
+    users {
+        bigint id PK
+        varchar user_type
+        varchar email
+        bit enabled
+        varchar password
+        varchar username
+    }
+    
+    clients {
+        bigint id PK, FK
+        varchar address
+        date date_of_birth
+        varchar first_name
+        varchar last_name
+        int loyalty_points
+        varchar phone_number
+    }
+    
+    employees {
+        bigint id PK, FK
+        varchar department
+        varchar employee_id UK
+        varchar first_name
+        date hire_date
+        varchar last_name
+        varchar position
+        double salary
+    }
+    
+    reservations {
+        bigint id PK
+        date check_in_date
+        date check_out_date
+        varchar room_type
+        bigint user_id FK
+    }
+    
+    reservation_room {
+        bigint reservation_id FK
+        bigint room_id FK
+    }
+    
+    roles {
+        bigint id PK
+        enum name
+    }
+    
+    room {
+        bigint room_number PK
+        bit is_available
+        int number_of_beds
+        double price
+        varchar type
+    }
+    
+    user_roles {
+        bigint user_id PK, FK
+        bigint role_id PK, FK
+    }
