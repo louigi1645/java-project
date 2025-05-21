@@ -66,5 +66,6 @@ executer successivement ces 3 actions :
 #### Java
 
 1. ouvrir un invite de commande à la racine de ce dossier
-2. executer `gradlew.bat bootRun`
-3. l'application est accessible à l'url <http://localhost:8080/>, depuis n'importe quel navigateur Web
+2. executer grad
+3. executer `gradlew.bat bootRun`
+4. l'application est accessible à l'url [http://localhost:8080/](http://localhost:8080/), depuis n'importe quel navigateur Web
