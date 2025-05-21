@@ -2,6 +2,8 @@ package com.penacony.hotel.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,25 @@ public class ReservationController {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
         this.roomRepository = roomRepository;
+    }
+
+    @GetMapping("/new")
+    public String showReservationForm(Model model) {
+        User currentUser = userService.getCurrentUser();
+        if (currentUser.getRoles().contains(new Role(ERole.ROLE_ADMIN))) {
+            return "redirect:/admin/reservations"; // Rediriger vers la page d'administration si l'utilisateur est un
+                                                   // admin
+        }
+        Optional<List<Room>> availableRooms = roomRepository.findByIsAvailable(true); // Récupérer les chambres
+        // disponibles
+        if (availableRooms.isEmpty()) {
+            model.addAttribute("error", "Aucune chambre disponible pour la réservation."); // Ajouter un message
+            // d'erreur
+        } else {
+            model.addAttribute("rooms", availableRooms.get()); // Ajouter les chambres disponibles au modèle
+        }
+        return "reservation_form"; // Retourner le nom de la vue du formulaire de réservation
+
     }
 
     @GetMapping

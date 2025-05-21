@@ -10,6 +10,9 @@
                     <a class="nav-link active" sec:authorize="hasRole('USER')" th:href="@{/dashboard}">Mon Profil</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" sec:authorize="!hasRole('ADMIN') and hasRole('USER')" th:href="@{/reservations/new}">Réserver</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" sec:authorize="!hasRole('ADMIN') and hasRole('USER')" th:href="@{/reservations}">Mes réservations</a>
                 </li>
                 <!-- Utiliser sec:authorize avec hasRole (sans le préfixe ROLE_) -->
