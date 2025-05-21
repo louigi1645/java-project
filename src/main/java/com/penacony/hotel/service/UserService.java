@@ -72,7 +72,7 @@ public class UserService {
         client.setDateOfBirth(dateOfBirth);
         client.setLoyaltyPoints(0);
         client.setRoles(getUserRoles());
-        if (clientRepository.findById(client.getId()).isPresent()) {
+        if (clientRepository.findByEmail(client.getEmail()).isPresent()) {
             throw new RuntimeException("Erreur: Cet identifiant d'utilisateur est déjà utilisé!");
         }
 
